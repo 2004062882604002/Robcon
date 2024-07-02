@@ -893,10 +893,24 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.s"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\servo\huaner\huaner_protocol.cpp -o CMakeFiles\DBUS_1.elf.dir\rdk\core\servo\huaner\huaner_protocol.cpp.s
 
+CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
+CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/servo.cpp
+CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj"
+	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\servo\servo.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\servo\servo.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\servo\servo.cpp
+
+CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.i"
+	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\servo\servo.cpp > CMakeFiles\DBUS_1.elf.dir\rdk\core\servo\servo.cpp.i
+
+CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.s"
+	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\servo\servo.cpp -o CMakeFiles\DBUS_1.elf.dir\rdk\core\servo\servo.cpp.s
+
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/circular_buffer.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\circular_buffer.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\circular_buffer.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\circular_buffer.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.i: cmake_force
@@ -910,7 +924,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.s: cmake_force
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/crc.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\crc.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\crc.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\crc.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.i: cmake_force
@@ -924,7 +938,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.s: cmake_force
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/io_stream.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\io_stream.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\io_stream.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\io_stream.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.i: cmake_force
@@ -938,7 +952,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.s: cmake_force
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/reliable_binary_transfer.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\reliable_binary_transfer.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\reliable_binary_transfer.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\reliable_binary_transfer.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.i: cmake_force
@@ -952,7 +966,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/reliable_binary_transfer.cpp.s: cmak
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/serial_port.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\serial_port.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\serial_port.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\serial_port.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.i: cmake_force
@@ -966,7 +980,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_port.cpp.s: cmake_force
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/serial_to_can.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\serial_to_can.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\serial_to_can.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\serial_to_can.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.i: cmake_force
@@ -980,7 +994,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/serial_to_can.cpp.s: cmake_force
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/simple_binary_transfer.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\simple_binary_transfer.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\simple_binary_transfer.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\simple_binary_transfer.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.i: cmake_force
@@ -994,7 +1008,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_binary_transfer.cpp.s: cmake_
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/simple_message_transfer.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\simple_message_transfer.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\transfer\simple_message_transfer.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\transfer\simple_message_transfer.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.i: cmake_force
@@ -1008,7 +1022,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/simple_message_transfer.cpp.s: cmake
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/underpan/differential_motion.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\underpan\differential_motion.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\underpan\differential_motion.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\underpan\differential_motion.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.i: cmake_force
@@ -1022,7 +1036,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/differential_motion.cpp.s: cmake_for
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/underpan/mecanum_motion.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\underpan\mecanum_motion.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\underpan\mecanum_motion.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\underpan\mecanum_motion.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.i: cmake_force
@@ -1036,7 +1050,7 @@ CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/mecanum_motion.cpp.s: cmake_force
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.obj: CMakeFiles/DBUS_1.elf.dir/flags.make
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/underpan/omnidirectional_motion.cpp
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.obj: CMakeFiles/DBUS_1.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.obj"
 	E:\Program\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.obj -MF CMakeFiles\DBUS_1.elf.dir\rdk\core\underpan\omnidirectional_motion.cpp.obj.d -o CMakeFiles\DBUS_1.elf.dir\rdk\core\underpan\omnidirectional_motion.cpp.obj -c D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\rdk\core\underpan\omnidirectional_motion.cpp
 
 CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.cpp.i: cmake_force
@@ -1108,6 +1122,7 @@ DBUS_1_elf_OBJECTS = \
 "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/feetech/feetech_STS.cpp.obj" \
 "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/feetech/feetech_protocol.cpp.obj" \
 "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.obj" \
+"CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj" \
 "CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj" \
 "CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj" \
 "CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj" \
@@ -1182,6 +1197,7 @@ DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/feetech/feetech_SMS.cpp.obj
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/feetech/feetech_STS.cpp.obj
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/feetech/feetech_protocol.cpp.obj
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.obj
+DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/io_stream.cpp.obj
@@ -1196,7 +1212,7 @@ DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/rdk/core/underpan/omnidirectional_motion.c
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/build.make
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/objects1.rsp
 DBUS_1.elf: CMakeFiles/DBUS_1.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Linking CXX executable DBUS_1.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Linking CXX executable DBUS_1.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\DBUS_1.elf.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/cmake-build-debug/DBUS_1.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/cmake-build-debug/DBUS_1.bin"

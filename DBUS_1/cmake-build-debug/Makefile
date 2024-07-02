@@ -1528,6 +1528,30 @@ rdk/core/servo/huaner/huaner_protocol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DBUS_1.elf.dir\build.make CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.s
 .PHONY : rdk/core/servo/huaner/huaner_protocol.cpp.s
 
+rdk/core/servo/servo.obj: rdk/core/servo/servo.cpp.obj
+.PHONY : rdk/core/servo/servo.obj
+
+# target to build an object file
+rdk/core/servo/servo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DBUS_1.elf.dir\build.make CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj
+.PHONY : rdk/core/servo/servo.cpp.obj
+
+rdk/core/servo/servo.i: rdk/core/servo/servo.cpp.i
+.PHONY : rdk/core/servo/servo.i
+
+# target to preprocess a source file
+rdk/core/servo/servo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DBUS_1.elf.dir\build.make CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.i
+.PHONY : rdk/core/servo/servo.cpp.i
+
+rdk/core/servo/servo.s: rdk/core/servo/servo.cpp.s
+.PHONY : rdk/core/servo/servo.s
+
+# target to generate assembly for a file
+rdk/core/servo/servo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DBUS_1.elf.dir\build.make CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.s
+.PHONY : rdk/core/servo/servo.cpp.s
+
 rdk/core/transfer/circular_buffer.obj: rdk/core/transfer/circular_buffer.cpp.obj
 .PHONY : rdk/core/transfer/circular_buffer.obj
 
@@ -1976,6 +2000,9 @@ help:
 	@echo ... rdk/core/servo/huaner/huaner_protocol.obj
 	@echo ... rdk/core/servo/huaner/huaner_protocol.i
 	@echo ... rdk/core/servo/huaner/huaner_protocol.s
+	@echo ... rdk/core/servo/servo.obj
+	@echo ... rdk/core/servo/servo.i
+	@echo ... rdk/core/servo/servo.s
 	@echo ... rdk/core/transfer/circular_buffer.obj
 	@echo ... rdk/core/transfer/circular_buffer.i
 	@echo ... rdk/core/transfer/circular_buffer.s

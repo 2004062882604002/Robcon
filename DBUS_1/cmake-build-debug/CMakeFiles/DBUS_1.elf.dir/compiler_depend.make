@@ -226,7 +226,16 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/RobotMain.cpp.obj: D:/BaiduSyncdisk/robot/Cli
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/motor/dji/m3508_motor.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/underpan/omnidirectional_motion.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/remote/dr16.h \
-  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstddef
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstddef \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_protocol.h \
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/chrono \
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ratio \
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ctime \
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/time.h \
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/time.h \
+  E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/parse_numbers.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_SCS.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/servo.h
 
 CMakeFiles/DBUS_1.elf.dir/Core/Src/can.c.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/can.c \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h \
@@ -6487,6 +6496,20 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/underpan/omnidirectional_mo
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstddef:
 
+D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_protocol.h:
+
+E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ratio:
+
+E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/time.h:
+
+D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/gpio.c:
+
+D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_SCS.h:
+
+D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c:
+
+D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/servo.h:
+
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/can.c:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/dma.c:
@@ -6507,10 +6530,6 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Middlewares/Third_Party/FreeRTOS/Sou
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 
-D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_SCS.h:
-
-D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/gpio.c:
-
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/gpio.h:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/main.c:
@@ -6526,8 +6545,6 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/stm32f4xx_hal_timebase_tim.
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/stm32f4xx_it.c:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/stm32f4xx_it.h:
-
-E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/time.h:
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/signal.h:
 
@@ -6556,10 +6573,6 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Src/stm
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c:
-
-D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/servo.h:
-
-D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c:
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ios_base.h:
 
@@ -6669,11 +6682,7 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/huaner/huaner_protoco
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/fashion_star/fashion_star_protocol.h:
 
-E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ratio:
-
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_SCS.cpp:
-
-D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_protocol.h:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/feetech/feetech_SMS.cpp:
 

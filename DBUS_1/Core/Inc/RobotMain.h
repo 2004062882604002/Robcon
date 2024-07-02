@@ -22,8 +22,13 @@
 #include "rdk/core/motor/dji/m3508_motor.h"
 #include "rdk/core/underpan/omnidirectional_motion.h"
 #include "rdk/core/remote/dr16.h"
+#include "rdk/core/servo/feetech/feetech_protocol.h"
+#include "rdk/core/servo/feetech/feetech_SCS.h"
+#include "rdk/core/servo/servo.h"
+
 extern std::shared_ptr<SerialPort> serial_port;
 extern std::shared_ptr<SerialPort> remoteSerial;
+extern std::shared_ptr<SerialPort>ftSerial;
 extern std::shared_ptr<ReliableBinaryTransfer> transfer;
 extern std::shared_ptr<C6xxController> c6xx_controller1;
 extern std::shared_ptr<C6xxController> c6xx_controller2;
@@ -40,68 +45,15 @@ extern std::shared_ptr<M3508Motor> m3508_motor10;
 extern std::shared_ptr<M3508Motor> m3508_motor11;
 extern std::shared_ptr<OmnidirectionalMotion> motion;
 extern std::shared_ptr<DR16> dr16;
-
-
-enum class MasterCmdType : uint8_t
-{
-    Ping = 0x00, //通信测试
-    Motion = 0x01,  //控制底盘移动
-    Launching = 0x02, //发射
-    Delivery = 0x03, //送球
-    GetMotor4Info = 0x04, //获取送球机构电机位置转速
-    SetLaunchingPID = 0x05, //设置发射机构PID
-    GetLaunchingRPM = 0x06, //获取发射机构电机转速
-};
-
-struct MasterCmd
-{
-    MasterCmdType cmd_type;
-};
-
-struct MasterCmdMotion
-{
-    MasterCmdType cmd_type;
-    int16_t x_speed;
-    int16_t y_speed;
-    int16_t z_speed;
-};
-
-struct MasterCmdLaunching
-{
-    MasterCmdType cmd_type;
-    int16_t speed;
-};
-
-struct MasterCmdDelivery
-{
-    MasterCmdType cmd_type;
-    int16_t pos;
-    int16_t speed;
-};
-
-struct MasterCmdGetMotor4Info
-{
-    MasterCmdType cmd_type;
-    double pos;
-    double speed;
-};
-
-struct MasterCmdSetLaunchingPID
-{
-    MasterCmdType cmd_type;
-    double kp;
-    double ki;
-    double kd;
-};
-
-struct MasterCmdGetLaunchingRPM
-{
-    MasterCmdType cmd_type;
-    double rpm1;
-    double rpm2;
-    double rpm3;
-    double rpm4;
-};
+extern std::shared_ptr<FeetechProtocol> FEE;
+extern std::shared_ptr<FeetechSCS> ft_scs1;
+extern std::shared_ptr<FeetechSCS> ft_scs2;
+extern std::shared_ptr<FeetechSCS> ft_scs3;
+extern std::shared_ptr<FeetechSCS> ft_scs4;
+extern std::shared_ptr<FeetechSCS> ft_scs5;
+extern std::shared_ptr<FeetechSCS> ft_scs6;
+extern std::shared_ptr<FeetechSCS> ft_scs7;
+extern std::shared_ptr<FeetechSCS> ft_scs8;
 
 
 #endif
@@ -118,7 +70,6 @@ extern "C" {
     void RobotTest();
     void RobotMain();
 
-    void Robot_DbusInit();
     void Robot_DbusMove();
     void Robot_Dbus_s11_s21();
     void Robot_Dbus_s11_s22();
@@ -126,7 +77,7 @@ extern "C" {
     void Robot_Dbus_s13_s23();
     void Robot_Dbus_s13_s21();
 
-    void Robot_StepMove();
+
     void RobotRecvMasterCmdThread();
 
     void OnHAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t size);

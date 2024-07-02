@@ -116,6 +116,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/feetech/feetech_protocol.cpp.obj.d"
   "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.obj"
   "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/huaner/huaner_protocol.cpp.obj.d"
+  "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj"
+  "CMakeFiles/DBUS_1.elf.dir/rdk/core/servo/servo.cpp.obj.d"
   "CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj"
   "CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/circular_buffer.cpp.obj.d"
   "CMakeFiles/DBUS_1.elf.dir/rdk/core/transfer/crc.cpp.obj"

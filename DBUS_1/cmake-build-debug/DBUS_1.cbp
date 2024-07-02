@@ -620,6 +620,9 @@
 		<Unit filename="D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/huaner/huaner_protocol.h">
 			<Option target="DBUS_1.elf"/>
 		</Unit>
+		<Unit filename="D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/servo.cpp">
+			<Option target="DBUS_1.elf"/>
+		</Unit>
 		<Unit filename="D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/servo/servo.h">
 			<Option target="DBUS_1.elf"/>
 		</Unit>

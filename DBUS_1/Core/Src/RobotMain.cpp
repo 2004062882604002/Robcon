@@ -8,6 +8,7 @@
 
 std::shared_ptr<SerialPort> serial_port;
 std::shared_ptr<SerialPort> remoteSerial;
+std::shared_ptr<SerialPort> ftSerial;
 std::shared_ptr<ReliableBinaryTransfer> transfer;
 std::shared_ptr<C6xxController> c6xx_controller1;
 std::shared_ptr<C6xxController> c6xx_controller2;
@@ -24,21 +25,34 @@ std::shared_ptr<M3508Motor> m3508_motor10;
 std::shared_ptr<M3508Motor> m3508_motor11;
 std::shared_ptr<OmnidirectionalMotion> motion;
 std::shared_ptr<DR16> dr16;
+std::shared_ptr<FeetechProtocol> FEE;
+std::shared_ptr<FeetechSCS> ft_scs1;
+std::shared_ptr<FeetechSCS> ft_scs2;
+std::shared_ptr<FeetechSCS> ft_scs3;
+std::shared_ptr<FeetechSCS> ft_scs4;
+std::shared_ptr<FeetechSCS> ft_scs5;
+std::shared_ptr<FeetechSCS> ft_scs6;
+std::shared_ptr<FeetechSCS> ft_scs7;
+std::shared_ptr<FeetechSCS> ft_scs8;
+
 uint32_t motion_timeout = 0;
 
-uint32_t step_count = 0;
 void RobotInit()
 {
     serial_port = std::make_shared<SerialPort>(&huart8);
     serial_port->start();
     remoteSerial = std::make_shared<SerialPort>(&huart1);
     remoteSerial->start();
+    ftSerial=std::make_shared<SerialPort>(&huart6);
+    ftSerial->start();
     transfer = std::make_shared<ReliableBinaryTransfer>(serial_port);
 
     dr16 = std::make_shared<DR16>(remoteSerial);
 
     c6xx_controller1 = std::make_shared<C6xxController>(&hcan1);
     c6xx_controller2 = std::make_shared<C6xxController>(&hcan2);
+
+    FEE =std::make_shared<FeetechProtocol>(ftSerial);
 
     m3508_motor1 = std::make_shared<M3508Motor>(c6xx_controller1, 1, DjiMotor::Mode::SPEED);
     m3508_motor2 = std::make_shared<M3508Motor>(c6xx_controller1, 2, DjiMotor::Mode::SPEED);
@@ -51,6 +65,15 @@ void RobotInit()
     m3508_motor8 = std::make_shared<M3508Motor>(c6xx_controller2, 4, DjiMotor::Mode::SPEED);
 
 
+
+    ft_scs1=std::make_shared<FeetechSCS>(FEE,1);
+    ft_scs2=std::make_shared<FeetechSCS>(FEE,2);
+    ft_scs3=std::make_shared<FeetechSCS>(FEE,3);
+    ft_scs4=std::make_shared<FeetechSCS>(FEE,4);
+    ft_scs5=std::make_shared<FeetechSCS>(FEE,5);
+    ft_scs6=std::make_shared<FeetechSCS>(FEE,6);
+    ft_scs7=std::make_shared<FeetechSCS>(FEE,7);
+    ft_scs8=std::make_shared<FeetechSCS>(FEE,8);
 
 
 
@@ -71,18 +94,28 @@ void RobotInit()
     m3508_motor7->set_target_rpm(0);
     m3508_motor8->set_target_rpm(0);
 
+    //爪子
+    //ft_scs1->write_position(0);
+    //ft_scs1->write_position_speed(0,500 );
+    //0-2048,
+    ft_scs2->write_position_speed(1000,500);
+    ft_scs3->write_position_speed(0,500);
+    ft_scs4->write_position_speed(0,500);
+    ft_scs5->write_position_speed(0,500);
+    ft_scs6->write_position_speed(0,0);
+    ft_scs7->write_position_speed(0,0);
+    ft_scs8->write_position_speed(0,0);
+
     motion = std::make_shared<OmnidirectionalMotion>(m3508_motor1, m3508_motor2, m3508_motor3, m3508_motor4);
     motion_timeout = HAL_GetTick();
 
 }
 void RobotMain()
 {
-    //Robot_DbusInit();
     while(true)
     {
         HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
         HAL_Delay(100);
-
 
         if(dr16->alive() )
         {
@@ -128,7 +161,11 @@ void RobotTest()
         HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
         //m3508_motor2->set_target_rpm(dr16->get_channel_1());
         //m3508_motor2->set_target_rpm(0);
-        int channel0=dr16->get_channel_1();
+        HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_7);
+        HAL_Delay(100); //
+        ft_scs1->write_position_speed(1024,500); //位置
+        //ft_scs1->write_position_speed(90,100);
+        /*int channel0=dr16->get_channel_1();
         float rpm1=(channel0-1024)/660*480;
         //m3508_motor2->set_target_rpm(rpm1);
 
@@ -140,81 +177,15 @@ void RobotTest()
         serial_port->write(reinterpret_cast<uint8_t*>(buff), strlen(buff));
 
         snprintf(buff, 128, "s1:%d s2:%d alive:%d\r\n", dr16->get_s1(), dr16->get_s2(), dr16->alive());
-        serial_port->write(reinterpret_cast<uint8_t*>(buff), strlen(buff));
+        serial_port->write(reinterpret_cast<uint8_t*>(buff), strlen(buff));*/
     }
 }
 
-void HandlePingRequest(MasterCmd* cmd)
-{
-    transfer->send_binary(reinterpret_cast<uint8_t*>(cmd), sizeof(MasterCmd));
-}
-
-void HandleMotionRequest(MasterCmd* cmd)
-{
-    MasterCmdMotion* motion_cmd = reinterpret_cast<MasterCmdMotion*>(cmd);
-    motion->clear();
-    motion->add_x_speed(motion_cmd->x_speed);
-    motion->add_y_speed(motion_cmd->y_speed);
-    motion->add_z_speed(motion_cmd->z_speed);
-    motion->commit();
-    motion_timeout = HAL_GetTick();
-}
 
 
 
-void HandleDeliveryRequest(MasterCmd* cmd)
-{
-    MasterCmdDelivery* delivery_cmd = reinterpret_cast<MasterCmdDelivery*>(cmd);
-    m3508_motor4->set_target_rpm(delivery_cmd->speed);
-    m3508_motor4->set_target_pos(delivery_cmd->pos);
-}
-
-void HandleGetMotor4InfoRequest(MasterCmd* cmd)
-{
-    MasterCmdGetMotor4Info* cmd2 = reinterpret_cast<MasterCmdGetMotor4Info*>(cmd);
-    cmd2->pos = m3508_motor4->get_pos();
-    cmd2->speed = c6xx_controller1->read_angle(4);
-    transfer->send_binary(reinterpret_cast<uint8_t*>(cmd2), sizeof(MasterCmdGetMotor4Info));
-}
-
-void HandleSetLaunchingPIDRequest(MasterCmd* cmd)
-{
-    MasterCmdSetLaunchingPID* cmd2 = reinterpret_cast<MasterCmdSetLaunchingPID*>(cmd);
-    m3508_motor5->set_speed_pid(cmd2->kp, cmd2->ki, cmd2->kd);
-    m3508_motor6->set_speed_pid(cmd2->kp, cmd2->ki, cmd2->kd);
-    m3508_motor10->set_speed_pid(cmd2->kp, cmd2->ki, cmd2->kd);
-    m3508_motor11->set_speed_pid(cmd2->kp, cmd2->ki, cmd2->kd);
-}
 
 
-
-void RobotRecvMasterCmdThread()
-{
-    while (true) {
-        uint8_t recv_buff[256];
-        std::size_t recv_len = transfer->recv_binary(recv_buff, 256, 200);
-        if (recv_len == 0) continue;
-        HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
-
-        MasterCmd* ret_cmd = reinterpret_cast<MasterCmd*>(recv_buff);
-        switch (ret_cmd->cmd_type) {
-            case MasterCmdType::Ping:
-                HandlePingRequest(ret_cmd);
-                break;
-            case MasterCmdType::Motion:
-                HandleMotionRequest(ret_cmd);
-                break;
-            case MasterCmdType::Delivery:
-                HandleDeliveryRequest(ret_cmd);
-                break;
-            case MasterCmdType::GetMotor4Info:
-                HandleGetMotor4InfoRequest(ret_cmd);
-                break;
-            case MasterCmdType::SetLaunchingPID:
-                HandleSetLaunchingPIDRequest(ret_cmd);
-        }
-    }
-}
 
 void RobotTick()
 {
@@ -243,24 +214,28 @@ void OnHAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t size)
 {
     serial_port->OnHAL_UARTEx_RxEventCallback(huart, size);
     remoteSerial->OnHAL_UARTEx_RxEventCallback(huart, size);
+    ftSerial->OnHAL_UARTEx_RxEventCallback(huart, size);
 }
 
 void OnHAL_UART_TxCpltCallback(UART_HandleTypeDef* huart)
 {
     serial_port->OnHAL_UART_TxCpltCallback(huart);
     remoteSerial->OnHAL_UART_TxCpltCallback(huart);
+    ftSerial->OnHAL_UART_TxCpltCallback(huart);
 }
 
 void OnHAL_UART_RxCpltCallback(UART_HandleTypeDef* huart)
 {
     serial_port->OnHAL_UART_RxCpltCallback(huart);
     remoteSerial->OnHAL_UART_RxCpltCallback(huart);
+    ftSerial->OnHAL_UART_RxCpltCallback(huart);
 }
 
 void OnHAL_UART_ErrorCallback(UART_HandleTypeDef* huart)
 {
     serial_port->OnHAL_UART_ErrorCallback(huart);
     remoteSerial->OnHAL_UART_ErrorCallback(huart);
+    ftSerial->OnHAL_UART_ErrorCallback(huart);
 }
 
 void OnHAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
@@ -365,10 +340,21 @@ void Robot_Dbus_s11_s21()
 
     motion->clear();
 
-    m3508_motor5->set_target_rpm(f_speed);
-    m3508_motor6->set_target_rpm(f_speed);
-    m3508_motor7->set_target_rpm(f_speed-50);
-    m3508_motor8->set_target_rpm(f_speed-50);
+    if(channel1>1024)
+    {
+        m3508_motor5->set_target_rpm(f_speed+50);
+        m3508_motor6->set_target_rpm(f_speed+50);
+        m3508_motor7->set_target_rpm(f_speed);
+        m3508_motor8->set_target_rpm(f_speed);
+    }
+    else
+    {
+        m3508_motor5->set_target_rpm(0);
+        m3508_motor6->set_target_rpm(0);
+        m3508_motor7->set_target_rpm(0);
+        m3508_motor8->set_target_rpm(0);
+    }
+
 
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_SET);
@@ -435,13 +421,13 @@ void Robot_Dbus_s13_s21()
     if(dr16->get_channel_1()>1024)
     {
         HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-        HAL_GPIO_WritePin(DIR_GPIO_Port,DIR_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(DIR_R_GPIO_Port,DIR_R_Pin,GPIO_PIN_RESET);
         __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
     }
     else if(dr16->get_channel_1()<1024)
     {
         HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-        HAL_GPIO_WritePin(DIR_GPIO_Port,DIR_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(DIR_R_GPIO_Port,DIR_R_Pin,GPIO_PIN_SET);
         __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
     }
     else
@@ -452,27 +438,3 @@ void Robot_Dbus_s13_s21()
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_RESET);
 }
 
-void Robot_StepMove()
-{
-    if(dr16->get_s2()==2&&dr16->get_s1()==1&&dr16->get_channel_1()!=1024)
-    {
-        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
-        const uint32_t target_steps = dr16->get_channel_1();  //
-        step_count++;
-        if(step_count>target_steps)
-        {
-            HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
-        }
-    }
-    else if(dr16->get_s2()==2&&dr16->get_s1()==2&&dr16->get_channel_1()!=1024)
-    {
-        //HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-        const uint32_t target_steps = 3000;  //
-        step_count++;
-        if(step_count>target_steps)
-        {
-            //HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
-        }
-    }
-}
