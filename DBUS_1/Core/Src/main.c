@@ -63,10 +63,10 @@ void MX_FREERTOS_Init(void);
 void SetM3508Can1Fifo0Filter()
 {
     CAN_FilterTypeDef filter;
-    filter.FilterBank = 0; //筛�?�器组编�??
+    filter.FilterBank = 0; //筛�?�器组编�???
     filter.FilterMode = CAN_FILTERMODE_IDMASK; //ID掩码模式
-    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�??
-    //接收�??有帧
+    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�???
+    //接收�???有帧
     filter.FilterIdHigh = 0x0000;
     filter.FilterIdLow = 0x0000;
     filter.FilterMaskIdHigh = 0x0000;
@@ -81,10 +81,10 @@ void SetM3508Can1Fifo0Filter()
 void SetM3508Can1Fifo1Filter()
 {
     CAN_FilterTypeDef filter;
-    filter.FilterBank = 1; //筛�?�器组编�??
+    filter.FilterBank = 1; //筛�?�器组编�???
     filter.FilterMode = CAN_FILTERMODE_IDMASK; //ID掩码模式
-    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�??
-    //接收�??有帧
+    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�???
+    //接收�???有帧
     filter.FilterIdHigh = 0x0000;
     filter.FilterIdLow = 0x0000;
     filter.FilterMaskIdHigh = 0x0000;
@@ -99,10 +99,10 @@ void SetM3508Can1Fifo1Filter()
 void SetM3508Can2Fifo0Filter()
 {
     CAN_FilterTypeDef filter;
-    filter.FilterBank = 14; //筛�?�器组编�??
+    filter.FilterBank = 14; //筛�?�器组编�???
     filter.FilterMode = CAN_FILTERMODE_IDMASK; //ID掩码模式
-    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�??
-    //接收�??有帧
+    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�???
+    //接收�???有帧
     filter.FilterIdHigh = 0x0000;
     filter.FilterIdLow = 0x0000;
     filter.FilterMaskIdHigh = 0x0000;
@@ -117,10 +117,10 @@ void SetM3508Can2Fifo0Filter()
 void SetM3508Can2Fifo1Filter()
 {
     CAN_FilterTypeDef filter;
-    filter.FilterBank = 15; //筛�?�器组编�??
+    filter.FilterBank = 15; //筛�?�器组编�???
     filter.FilterMode = CAN_FILTERMODE_IDMASK; //ID掩码模式
-    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�??
-    //接收�??有帧
+    filter.FilterScale = CAN_FILTERSCALE_32BIT; //32位长�???
+    //接收�???有帧
     filter.FilterIdHigh = 0x0000;
     filter.FilterIdLow = 0x0000;
     filter.FilterMaskIdHigh = 0x0000;
@@ -144,7 +144,7 @@ void M3508CanInit()
 
     HAL_CAN_Start(&hcan1);
     HAL_CAN_Start(&hcan2);
-    //�??启Can接收消息中断
+    //�???启Can接收消息中断
     __HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
     __HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_RX_FIFO1_MSG_PENDING);
 
@@ -190,7 +190,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
     RobotInit();
     M3508CanInit();
-    HAL_TIM_Base_Start_IT(&htim7); //每隔1ms tick�?�?
+    HAL_TIM_Base_Start_IT(&htim7); //每隔1ms tick�??�??
 
   /* USER CODE END 2 */
 

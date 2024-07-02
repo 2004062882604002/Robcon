@@ -61,6 +61,13 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for RobotMove */
+osThreadId_t RobotMoveHandle;
+const osThreadAttr_t RobotMove_attributes = {
+  .name = "RobotMove",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -69,6 +76,7 @@ const osThreadAttr_t defaultTask_attributes = {
 
 void RecvRemote(void *argument);
 void StartDefaultTask(void *argument);
+void StartRobotMove(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -104,6 +112,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* creation of RobotMove */
+  RobotMoveHandle = osThreadNew(StartRobotMove, NULL, &RobotMove_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -146,9 +157,28 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   //RobotTest();
-  RobotMove();
+  RobotMain();
 
   /* USER CODE END StartDefaultTask */
+}
+
+/* USER CODE BEGIN Header_StartRobotMove */
+/**
+* @brief Function implementing the RobotMove thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartRobotMove */
+void StartRobotMove(void *argument)
+{
+  /* USER CODE BEGIN StartRobotMove */
+  /* Infinite loop */
+    while(1)
+    {
+        Robot_DbusMove();
+    }
+
+  /* USER CODE END StartRobotMove */
 }
 
 /* Private application code --------------------------------------------------*/

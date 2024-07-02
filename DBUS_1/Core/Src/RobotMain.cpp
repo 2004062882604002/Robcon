@@ -17,7 +17,7 @@ std::shared_ptr<M3508Motor> m3508_motor3;
 std::shared_ptr<M3508Motor> m3508_motor4;
 std::shared_ptr<M3508Motor> m3508_motor5;
 std::shared_ptr<M3508Motor> m3508_motor6;
-std::shared_ptr<M2006Motor> m2006_motor7;
+std::shared_ptr<M3508Motor> m3508_motor7;
 std::shared_ptr<M3508Motor> m3508_motor8;
 std::shared_ptr<M3508Motor> m3508_motor9;
 std::shared_ptr<M3508Motor> m3508_motor10;
@@ -26,6 +26,7 @@ std::shared_ptr<OmnidirectionalMotion> motion;
 std::shared_ptr<DR16> dr16;
 uint32_t motion_timeout = 0;
 
+bool Dbus_flag=0;
 void RobotInit()
 {
     serial_port = std::make_shared<SerialPort>(&huart8);
@@ -44,32 +45,80 @@ void RobotInit()
     m3508_motor3 = std::make_shared<M3508Motor>(c6xx_controller1, 3, DjiMotor::Mode::SPEED);
     m3508_motor4 = std::make_shared<M3508Motor>(c6xx_controller1, 4, DjiMotor::Mode::SPEED);
 
+    m3508_motor5 = std::make_shared<M3508Motor>(c6xx_controller2, 1, DjiMotor::Mode::SPEED);
+    m3508_motor6 = std::make_shared<M3508Motor>(c6xx_controller2, 2, DjiMotor::Mode::SPEED);
+    m3508_motor7 = std::make_shared<M3508Motor>(c6xx_controller2, 3, DjiMotor::Mode::SPEED);
+    m3508_motor8 = std::make_shared<M3508Motor>(c6xx_controller2, 4, DjiMotor::Mode::SPEED);
+
 
 
 
 
 
     //底盘
-    m3508_motor1->set_reverse(true);
+    /*m3508_motor1->set_reverse(true);
     m3508_motor2->set_reverse(true);
     m3508_motor3->set_reverse(true);
-    m3508_motor4->set_reverse(true);
+    m3508_motor4->set_reverse(true);*/
     m3508_motor1->set_target_rpm(0);
     m3508_motor2->set_target_rpm(0);
     m3508_motor3->set_target_rpm(0);
     m3508_motor4->set_target_rpm(0);
 
+    //摩擦轮
+    m3508_motor5->set_target_rpm(0);
+    m3508_motor6->set_target_rpm(0);
+    m3508_motor7->set_target_rpm(0);
+    m3508_motor8->set_target_rpm(0);
+
     motion = std::make_shared<OmnidirectionalMotion>(m3508_motor1, m3508_motor2, m3508_motor3, m3508_motor4);
     motion_timeout = HAL_GetTick();
 
 }
-void RobotMove()
+void RobotMain()
 {
+    //Robot_DbusInit();
     while(true)
     {
         HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
-        Move();
         HAL_Delay(100);
+
+
+        if(dr16->alive() )
+        {
+
+            while(dr16->get_s2()==1)
+            {
+                while(dr16->get_s1()==1)
+                {
+                    Robot_Dbus_s11_s21();
+                }
+                while(dr16->get_s1()==3)
+                {
+                    Robot_Dbus_s11_s22();
+                }
+
+            }
+            while(dr16->get_s2()==3)
+            {
+                Robot_Dbus_s12();
+            }
+            while(dr16->get_s2()==2)
+            {
+                if(dr16->get_s1()==3)
+                {
+                    Robot_Dbus_s13_s23();
+                }
+                else if(dr16->get_s1()==1)
+                {
+                    Robot_Dbus_s13_s21();
+                }
+            }
+
+        }
+
+
+
     }
 
 }
@@ -90,10 +139,8 @@ void RobotTest()
                  dr16->get_channel_2(), dr16->get_channel_3());
         serial_port->write(reinterpret_cast<uint8_t*>(buff), strlen(buff));
 
-        snprintf(buff, 128, "s1:%d s2:%d\r\n", dr16->get_s1(), dr16->get_s2());
+        snprintf(buff, 128, "s1:%d s2:%d alive:%d\r\n", dr16->get_s1(), dr16->get_s2(), dr16->alive());
         serial_port->write(reinterpret_cast<uint8_t*>(buff), strlen(buff));
-
-        HAL_Delay(100);
     }
 }
 
@@ -175,10 +222,11 @@ void RobotTick()
     c6xx_controller2->tick();
 
     motion->tick();
-    //m3508_motor2->tick();
-   // m3508_motor4->tick(); //送球机构电机
 
-
+    m3508_motor5->tick();
+    m3508_motor6->tick();
+    m3508_motor7->tick();
+    m3508_motor8->tick();
 
 
     //如果超过1秒没有接收到上位机控制指令，则让底盘立刻停止运动
@@ -232,26 +280,159 @@ void RecvDR16Thread()
     dr16->start();
 }
 
-void Move()
+void Robot_DbusInit()
 {
-    if(dr16->get_s2()==2)
-    {
-        int channel0=dr16->get_channel_0();
-        int channel1=dr16->get_channel_1();
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_SET);
 
-        float x_speed=(float)(channel1-1024)/660*480;
-        float y_speed=(float)(channel0-1024)/660*480;
+    m3508_motor5->set_target_rpm(0);
+    m3508_motor6->set_target_rpm(0);
+    m3508_motor7->set_target_rpm(0);
+    m3508_motor8->set_target_rpm(0);
+}
+
+/*
+ * @brief 左摇杆-底盘（前后左右）
+ * @details
+ */
+void Robot_DbusMove()
+{
+    if (dr16->alive())
+    {
+        while(dr16->get_s2()==1&&dr16->get_s1()==1 || dr16->get_s2()==1&&dr16->get_s1()==3)
+        {
+            HAL_GPIO_WritePin(GPIOG,GPIO_PIN_1,GPIO_PIN_RESET);
+
+            int channel0=dr16->get_channel_0();
+            int channel3=dr16->get_channel_3();
+            int channel2=dr16->get_channel_2();
+
+            float x_speed=(float)(channel3-1024)*1.2;
+            float y_speed=(float)(channel2-1024)*1.2;
+            float z_speed=(float)(channel0-1024)*1.2;
+
+            motion->clear();
+
+            motion->add_x_speed(x_speed);
+            motion->add_y_speed(y_speed);
+            motion->add_x_speed(z_speed);
+
+            motion->commit();
+            motion_timeout = HAL_GetTick();
+
+        }
+        HAL_GPIO_WritePin(GPIOG,GPIO_PIN_1,GPIO_PIN_RESET);
+
+        int channel3=dr16->get_channel_3();
+        int channel2=dr16->get_channel_2();
+
+        float x_speed=(float)(channel3-1024)*1.2;
+        float y_speed=(float)(channel2-1024)*1.2;
+
         motion->clear();
+
         motion->add_x_speed(x_speed);
         motion->add_y_speed(y_speed);
-        //m3508_motor2->set_target_rpm(rpm1);
+
         motion->commit();
         motion_timeout = HAL_GetTick();
     }
     else
     {
+        HAL_GPIO_WritePin(GPIOG,GPIO_PIN_1,GPIO_PIN_SET);
         motion->clear();
         motion->commit();
     }
 
+
+
 }
+
+
+/*
+ * @brief 上：摩擦轮加速
+          下：夹爪收
+          左：底盘逆时针
+          右：底盘顺时针
+ * @details
+ */
+void Robot_Dbus_s11_s21()
+{
+
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_RESET);
+
+    int channel1=dr16->get_channel_1();
+    float f_speed=(float)(channel1-1024)*1.2;
+
+    motion->clear();
+
+    m3508_motor5->set_target_rpm(f_speed);
+    m3508_motor6->set_target_rpm(f_speed);
+    m3508_motor7->set_target_rpm(f_speed-50);
+    m3508_motor8->set_target_rpm(f_speed-50);
+
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_SET);
+}
+
+/*
+ * @brief 上：摩擦轮停
+          下：夹爪收
+          左：底盘逆时针
+          右：底盘顺时针
+ * @details
+ */
+void Robot_Dbus_s11_s22()
+{
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_3,GPIO_PIN_RESET);
+
+    m3508_motor5->set_target_rpm(0);
+    m3508_motor6->set_target_rpm(0);
+    m3508_motor7->set_target_rpm(0);
+    m3508_motor8->set_target_rpm(0);
+
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_3,GPIO_PIN_SET);
+}
+
+/*
+ * @brief 上：左夹爪-收
+          下：右夹爪-闭
+          左：左夹爪-开
+          右：右夹爪-闭
+ * @details
+ */
+void Robot_Dbus_s12()
+{
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_RESET);
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_SET);
+}
+
+/*
+ * @brief 上：右丝杆-上
+          下：右丝杆-下
+          左：右13爪-开
+          右：右24爪-开
+ * @details
+ */
+void Robot_Dbus_s13_s23()
+{
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_RESET);
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_SET);
+}
+
+/*
+ * @brief 上：左丝杆-上
+          下：左丝杆-下
+          左：左13爪-开
+          右：左24爪-开
+ * @details
+ */
+void Robot_Dbus_s13_s21()
+{
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_RESET);
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_SET);
+}
+
