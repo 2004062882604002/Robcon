@@ -8,6 +8,7 @@
 
 #include "usart.h"
 #include "can.h"
+#include "tim.h"
 
 #ifdef __cplusplus
 
@@ -125,6 +126,7 @@ extern "C" {
     void Robot_Dbus_s13_s23();
     void Robot_Dbus_s13_s21();
 
+    void Robot_StepMove();
     void RobotRecvMasterCmdThread();
 
     void OnHAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t size);

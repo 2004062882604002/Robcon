@@ -26,7 +26,7 @@ std::shared_ptr<OmnidirectionalMotion> motion;
 std::shared_ptr<DR16> dr16;
 uint32_t motion_timeout = 0;
 
-bool Dbus_flag=0;
+uint32_t step_count = 0;
 void RobotInit()
 {
     serial_port = std::make_shared<SerialPort>(&huart8);
@@ -431,8 +431,48 @@ void Robot_Dbus_s13_s23()
  */
 void Robot_Dbus_s13_s21()
 {
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_RESET);
-    HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_SET);
+    if(dr16->get_channel_1()>1024)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(DIR_GPIO_Port,DIR_Pin,GPIO_PIN_RESET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
+    }
+    else if(dr16->get_channel_1()<1024)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(DIR_GPIO_Port,DIR_Pin,GPIO_PIN_SET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
+    }
+    else
+    {
+        HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+    }
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_RESET);
 }
 
+void Robot_StepMove()
+{
+    if(dr16->get_s2()==2&&dr16->get_s1()==1&&dr16->get_channel_1()!=1024)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
+        const uint32_t target_steps = dr16->get_channel_1();  //
+        step_count++;
+        if(step_count>target_steps)
+        {
+            HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+        }
+    }
+    else if(dr16->get_s2()==2&&dr16->get_s1()==2&&dr16->get_channel_1()!=1024)
+    {
+        //HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        const uint32_t target_steps = 3000;  //
+        step_count++;
+        if(step_count>target_steps)
+        {
+            //HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+        }
+    }
+}

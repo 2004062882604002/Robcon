@@ -57,4 +57,5 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/main.c.obj: \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/gpio.h \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/RobotMain.h \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/usart.h \
- D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/can.h
+ D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/can.h \
+ D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/tim.h

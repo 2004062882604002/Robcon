@@ -41,4 +41,5 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/usart.c.obj: \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Drivers\STM32F4xx_HAL_Driver\Inc/stm32f4xx_hal_uart.h \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/RobotMain.h \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/usart.h \
- D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/can.h
+ D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/can.h \
+ D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/tim.h

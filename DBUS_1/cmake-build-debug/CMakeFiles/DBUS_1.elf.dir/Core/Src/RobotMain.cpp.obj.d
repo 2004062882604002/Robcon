@@ -41,6 +41,7 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/RobotMain.cpp.obj: \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Drivers\STM32F4xx_HAL_Driver\Inc/stm32f4xx_hal_tim_ex.h \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Drivers\STM32F4xx_HAL_Driver\Inc/stm32f4xx_hal_uart.h \
  D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/can.h \
+ D:\BaiduSyncdisk\robot\Clion_Project\DBUS_1\Core\Inc/tim.h \
  e:\program\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\c++\10.3.1\functional \
  e:\program\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\c++\10.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\c++config.h \
  e:\program\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\c++\10.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\os_defines.h \

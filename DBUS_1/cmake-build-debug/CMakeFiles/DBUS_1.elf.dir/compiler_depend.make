@@ -43,6 +43,7 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/RobotMain.cpp.obj: D:/BaiduSyncdisk/robot/Cli
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h \
   E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/functional \
   E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
   E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h \
@@ -269,7 +270,8 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/can.c.obj: D:/BaiduSyncdisk/robot/Clion_Proje
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/RobotMain.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/usart.h \
-  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h
 
 CMakeFiles/DBUS_1.elf.dir/Core/Src/dma.c.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/dma.c \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/dma.h \
@@ -365,7 +367,8 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/freertos.c.obj: D:/BaiduSyncdisk/robot/Clion_
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/RobotMain.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/usart.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/main.h \
-  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h
 
 CMakeFiles/DBUS_1.elf.dir/Core/Src/gpio.c.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/gpio.c \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/gpio.h \
@@ -466,7 +469,8 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/main.c.obj: D:/BaiduSyncdisk/robot/Clion_Proj
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/gpio.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/RobotMain.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/usart.h \
-  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h
 
 CMakeFiles/DBUS_1.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/stm32f4xx_hal_msp.c \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/main.h \
@@ -775,7 +779,8 @@ CMakeFiles/DBUS_1.elf.dir/Core/Src/usart.c.obj: D:/BaiduSyncdisk/robot/Clion_Pro
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/RobotMain.h \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/usart.h \
-  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h \
+  D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h
 
 CMakeFiles/DBUS_1.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj: D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
   D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
@@ -6042,6 +6047,8 @@ E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 
+D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h:
+
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
@@ -6077,8 +6084,6 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/can.h:
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/transfer/simple_binary_transfer.h:
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/functional:
-
-E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h:
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h:
 
@@ -6121,6 +6126,8 @@ E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/typei
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/tuple:
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/utility:
+
+E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h:
 
 E:/Program/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/initializer_list:
 
@@ -6507,8 +6514,6 @@ D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/gpio.c:
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/gpio.h:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Src/main.c:
-
-D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/Core/Inc/tim.h:
 
 D:/BaiduSyncdisk/robot/Clion_Project/DBUS_1/rdk/core/remote/dr16.cpp:
 

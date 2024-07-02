@@ -26,10 +26,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "RobotMain.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+extern uint32_t step_count;
 
 /* USER CODE END PTD */
 
@@ -68,6 +70,13 @@ const osThreadAttr_t RobotMove_attributes = {
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for StepMove */
+osThreadId_t StepMoveHandle;
+const osThreadAttr_t StepMove_attributes = {
+  .name = "StepMove",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -77,6 +86,7 @@ const osThreadAttr_t RobotMove_attributes = {
 void RecvRemote(void *argument);
 void StartDefaultTask(void *argument);
 void StartRobotMove(void *argument);
+void StartStepMove(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -115,6 +125,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of RobotMove */
   RobotMoveHandle = osThreadNew(StartRobotMove, NULL, &RobotMove_attributes);
+
+  /* creation of StepMove */
+  StepMoveHandle = osThreadNew(StartStepMove, NULL, &StepMove_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -179,6 +192,28 @@ void StartRobotMove(void *argument)
     }
 
   /* USER CODE END StartRobotMove */
+}
+
+/* USER CODE BEGIN Header_StartStepMove */
+/**
+* @brief Function implementing the StepMove thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartStepMove */
+void StartStepMove(void *argument)
+{
+  /* USER CODE BEGIN StartStepMove */
+  /* Infinite loop */
+  while(1)
+  {
+      osDelay(0.5);
+      //Robot_StepMove();
+  }
+
+
+
+  /* USER CODE END StartStepMove */
 }
 
 /* Private application code --------------------------------------------------*/
