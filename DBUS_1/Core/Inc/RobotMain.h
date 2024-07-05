@@ -43,6 +43,7 @@ extern std::shared_ptr<M3508Motor> m3508_motor8;
 extern std::shared_ptr<M3508Motor> m3508_motor9;
 extern std::shared_ptr<M3508Motor> m3508_motor10;
 extern std::shared_ptr<M3508Motor> m3508_motor11;
+extern std::shared_ptr<M3508Motor> m3508_motor12;
 extern std::shared_ptr<OmnidirectionalMotion> motion;
 extern std::shared_ptr<DR16> dr16;
 extern std::shared_ptr<FeetechProtocol> FEE;

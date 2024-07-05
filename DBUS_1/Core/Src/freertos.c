@@ -158,8 +158,8 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
-  RobotTest();
-  //RobotMain();
+  //RobotTest();
+  RobotMain();
 
   /* USER CODE END StartDefaultTask */
 }
