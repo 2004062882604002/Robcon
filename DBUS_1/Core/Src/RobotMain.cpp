@@ -96,27 +96,21 @@ void RobotInit()
 
     //爪子
     //左 -280 280
-    ft_scs1->write_position_speed(0,500);
-    ft_scs2->write_position_speed(0,500);
-    ft_scs3->write_position_speed(0,500);
-    ft_scs4->write_position_speed(0,500);
+    //1：17 2：80 3：90 4：20
+    //5：95 6：40 7：50 8
+    m3508_motor9->set_max_output_current(1);
+    m3508_motor10->set_max_output_current(1);
     m3508_motor9->set_target_rpm(100);
-    //m3508_motor9->set_target_pos(-290);
+    m3508_motor9->set_target_pos(-290);
     m3508_motor10->set_target_rpm(100);
-    //m3508_motor10->set_target_pos(290);
-    m3508_motor9->set_target_pos(0);
-    m3508_motor10->set_target_pos(0);
-    //右
-    ft_scs5->write_position_speed(0,500);
-    ft_scs6->write_position_speed(0,500);
-    ft_scs7->write_position_speed(0,500);
-    ft_scs8->write_position_speed(0,500);
+    m3508_motor10->set_target_pos(290);
+
+    m3508_motor11->set_max_output_current(1);
+    m3508_motor12->set_max_output_current(1);
     m3508_motor11->set_target_rpm(100);
-    //m3508_motor11->set_target_pos(-300);
+    m3508_motor11->set_target_pos(-300);
     m3508_motor12->set_target_rpm(100);
-    //m3508_motor12->set_target_pos(300);
-    m3508_motor9->set_target_pos(0);
-    m3508_motor10->set_target_pos(0);
+    m3508_motor12->set_target_pos(300);
 
     motion = std::make_shared<OmnidirectionalMotion>(m3508_motor1, m3508_motor2, m3508_motor3, m3508_motor4);
     motion_timeout = HAL_GetTick();
@@ -169,14 +163,41 @@ void RobotMain()
 }
 void RobotTest()
 {
-    while (true) {
+    /*HAL_Delay(100);
+    ft_scs1->write_position_speed(500,100);
+    HAL_Delay(100);*/
+
+
+    while (1) {
 
         HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
 
-        /*HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_7);
-        HAL_Delay(100); //
-        ft_scs1->write_position_speed(1024,500); //位置*/
+        HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_7);
+        HAL_Delay(5);
+        ft_scs1->write_position(500); //位置*/
+        HAL_Delay(5);
+        ft_scs2->write_position(400); //位置*/
+        HAL_Delay(5);
+        ft_scs3->write_position(500);
+        HAL_Delay(5);
+        ft_scs4->write_position(500);
+//        HAL_Delay(10);
+//        ft_scs1->write_position(500); //位置*/
+//       ft_scs2->write_position(400); //位置*/
+//        ft_scs3->write_position(500);
+//        ft_scs4->write_position(500);
+//        ft_scs5->write_position(500); //位置*/
+//        ft_scs6->write_position(500); //位置*/
+//        ft_scs7->write_position(500);
+//        ft_scs8->write_position(500);
 
+        //ft_scs1->write_position(250);
+        //ft_scs2->write_position(250);
+        //HAL_Delay(1000);
+        //ft_scs1->write_position(0);
+        //ft_scs2->write_position(0);
+        //ft_scs3->write_position(0);
+        //ft_scs4->write_position(0);
         //Robot_Dbus_s12();
 
 
@@ -357,10 +378,12 @@ void Robot_Dbus_s11_s21()
     }
     else if(channel1<1024)
     {
-        m3508_motor11->set_target_pos(0);
-        m3508_motor12->set_target_pos(0);
+
         m3508_motor9->set_target_pos(0);
         m3508_motor10->set_target_pos(0);
+        m3508_motor11->set_target_pos(0);
+        m3508_motor12->set_target_pos(0);
+
     }
 
 
@@ -383,7 +406,25 @@ void Robot_Dbus_s11_s22()
     m3508_motor6->set_target_rpm(0);
     m3508_motor7->set_target_rpm(0);
     m3508_motor8->set_target_rpm(0);
-
+    if(dr16->get_channel_1()<1024)
+    {
+        HAL_Delay(5);
+        ft_scs1->write_position(500);
+        HAL_Delay(5);
+        ft_scs2->write_position(400);
+        HAL_Delay(5);
+        ft_scs3->write_position(500);
+        HAL_Delay(5);
+        ft_scs4->write_position(500);
+        HAL_Delay(5);
+        ft_scs5->write_position(500);
+        HAL_Delay(5);
+        ft_scs6->write_position(400);
+        HAL_Delay(5);
+        ft_scs7->write_position(500);
+        HAL_Delay(5);
+        ft_scs8->write_position(500);
+    }
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_3,GPIO_PIN_SET);
 }
@@ -400,19 +441,47 @@ void Robot_Dbus_s12()
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_RESET);
     if(dr16->get_channel_1()>1024)
     {
-
+        HAL_Delay(5);
+        ft_scs1->write_position(500);
+        HAL_Delay(5);
+        ft_scs2->write_position(400);
+        HAL_Delay(5);
+        ft_scs3->write_position(500);
+        HAL_Delay(5);
+        ft_scs4->write_position(500);
     }
     else if(dr16->get_channel_1()<1024)
     {
-
+        HAL_Delay(5);
+        ft_scs5->write_position(500);
+        HAL_Delay(5);
+        ft_scs6->write_position(400);
+        HAL_Delay(5);
+        ft_scs7->write_position(500);
+        HAL_Delay(5);
+        ft_scs8->write_position(500);
     }
     else if(dr16->get_channel_0()>1024)
     {
-
+        HAL_Delay(5);
+        ft_scs5->write_position(95);
+        HAL_Delay(5);
+        ft_scs6->write_position(40);
+        HAL_Delay(5);
+        ft_scs7->write_position(50);
+        HAL_Delay(5);
+        ft_scs8->write_position(0);
     }
     else if(dr16->get_channel_0()<1024)
     {
-
+        HAL_Delay(5);
+        ft_scs1->write_position(17);
+        HAL_Delay(5);
+        ft_scs2->write_position(80);
+        HAL_Delay(5);
+        ft_scs3->write_position(90);
+        HAL_Delay(5);
+        ft_scs4->write_position(20);
     }
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_SET);
@@ -439,6 +508,20 @@ void Robot_Dbus_s13_s23()
         HAL_TIM_PWM_Start(&htim9,TIM_CHANNEL_2);
         HAL_GPIO_WritePin(GPIOE,GPIO_PIN_12,GPIO_PIN_SET);
         __HAL_TIM_SET_COMPARE(&htim9,TIM_CHANNEL_2,400);
+    }
+    else if(dr16->get_channel_0()<1024)
+    {
+        HAL_Delay(5);
+        ft_scs5->write_position(95);
+        HAL_Delay(5);
+        ft_scs7->write_position(50);
+    }
+    else if(dr16->get_channel_0()>1024)
+    {
+        HAL_Delay(5);
+        ft_scs6->write_position(40);
+        HAL_Delay(5);
+        ft_scs8->write_position(0);
     }
     else
     {
@@ -469,6 +552,20 @@ void Robot_Dbus_s13_s21()
         HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
         HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
         __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
+    }
+    else if(dr16->get_channel_0()<1024)
+    {
+        HAL_Delay(5);
+        ft_scs1->write_position(17);
+        HAL_Delay(5);
+        ft_scs3->write_position(90);
+    }
+    else if(dr16->get_channel_0()>1024)
+    {
+        HAL_Delay(5);
+        ft_scs2->write_position(80);
+        HAL_Delay(5);
+        ft_scs4->write_position(20);
     }
     else
     {
