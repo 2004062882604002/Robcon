@@ -55,18 +55,22 @@ void RobotInit()
 
     FEE =std::make_shared<FeetechProtocol>(ftSerial);
 
+//    m3508_motor1 = std::make_shared<M3508Motor>(c6xx_controller1, 1, DjiMotor::Mode::SPEED);
+//    m3508_motor2 = std::make_shared<M3508Motor>(c6xx_controller1, 2, DjiMotor::Mode::SPEED);
+//    m3508_motor3 = std::make_shared<M3508Motor>(c6xx_controller1, 3, DjiMotor::Mode::SPEED);
+//    m3508_motor4 = std::make_shared<M3508Motor>(c6xx_controller1, 4, DjiMotor::Mode::SPEED);
     m3508_motor1 = std::make_shared<M3508Motor>(c6xx_controller1, 1, DjiMotor::Mode::SPEED);
-    m3508_motor2 = std::make_shared<M3508Motor>(c6xx_controller1, 2, DjiMotor::Mode::SPEED);
-    m3508_motor3 = std::make_shared<M3508Motor>(c6xx_controller1, 3, DjiMotor::Mode::SPEED);
-    m3508_motor4 = std::make_shared<M3508Motor>(c6xx_controller1, 4, DjiMotor::Mode::SPEED);
+    m3508_motor2 = std::make_shared<M3508Motor>(c6xx_controller2, 1, DjiMotor::Mode::SPEED);
+    m3508_motor3 = std::make_shared<M3508Motor>(c6xx_controller2, 2, DjiMotor::Mode::SPEED);
+    m3508_motor4 = std::make_shared<M3508Motor>(c6xx_controller1, 2    , DjiMotor::Mode::SPEED);
 
     m3508_motor9 = std::make_shared<M3508Motor>(c6xx_controller1,5,DjiMotor::Mode::SPEED_POS);
     m3508_motor10 = std::make_shared<M3508Motor>(c6xx_controller1,6,DjiMotor::Mode::SPEED_POS);
 
-    m3508_motor5 = std::make_shared<M3508Motor>(c6xx_controller2, 1, DjiMotor::Mode::SPEED);
-    m3508_motor6 = std::make_shared<M3508Motor>(c6xx_controller2, 2, DjiMotor::Mode::SPEED);
-    m3508_motor7 = std::make_shared<M3508Motor>(c6xx_controller2, 3, DjiMotor::Mode::SPEED);
-    m3508_motor8 = std::make_shared<M3508Motor>(c6xx_controller2, 4, DjiMotor::Mode::SPEED);
+    m3508_motor5 = std::make_shared<M3508Motor>(c6xx_controller1, 3, DjiMotor::Mode::SPEED);
+    m3508_motor6 = std::make_shared<M3508Motor>(c6xx_controller2, 3, DjiMotor::Mode::SPEED);
+    m3508_motor7 = std::make_shared<M3508Motor>(c6xx_controller2, 4, DjiMotor::Mode::SPEED);
+    m3508_motor8 = std::make_shared<M3508Motor>(c6xx_controller1, 4, DjiMotor::Mode::SPEED);
 
     m3508_motor11 = std::make_shared<M3508Motor>(c6xx_controller2,5,DjiMotor::Mode::SPEED_POS);
     m3508_motor12 = std::make_shared<M3508Motor>(c6xx_controller2,6,DjiMotor::Mode::SPEED_POS);
@@ -97,6 +101,7 @@ void RobotInit()
     //爪子
     //左 -280 280
     //1：17 2：80 3：90 4：20
+    //1：540 2：530 3：556 4：540
     //5：95 6：40 7：50 8
     m3508_motor9->set_max_output_current(1);
     m3508_motor10->set_max_output_current(1);
@@ -311,7 +316,7 @@ void Robot_DbusMove()
 
             motion->add_x_speed(x_speed);
             motion->add_y_speed(y_speed);
-            motion->add_x_speed(z_speed);
+            motion->add_z_speed(-z_speed);
 
             motion->commit();
             motion_timeout = HAL_GetTick();
@@ -408,14 +413,15 @@ void Robot_Dbus_s11_s22()
     m3508_motor8->set_target_rpm(0);
     if(dr16->get_channel_1()<1024)
     {
+        //1：540 2：530 3：556 4：540
         HAL_Delay(5);
-        ft_scs1->write_position(500);
+        ft_scs1->write_position(540);
         HAL_Delay(5);
-        ft_scs2->write_position(400);
+        ft_scs2->write_position(530);
         HAL_Delay(5);
-        ft_scs3->write_position(500);
+        ft_scs3->write_position(556);
         HAL_Delay(5);
-        ft_scs4->write_position(500);
+        ft_scs4->write_position(540);
         HAL_Delay(5);
         ft_scs5->write_position(500);
         HAL_Delay(5);
@@ -441,14 +447,15 @@ void Robot_Dbus_s12()
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_RESET);
     if(dr16->get_channel_1()>1024)
     {
+        //1：540 2：530 3：556 4：540
         HAL_Delay(5);
-        ft_scs1->write_position(500);
+        ft_scs1->write_position(540);
         HAL_Delay(5);
-        ft_scs2->write_position(400);
+        ft_scs2->write_position(530);
         HAL_Delay(5);
-        ft_scs3->write_position(500);
+        ft_scs3->write_position(556);
         HAL_Delay(5);
-        ft_scs4->write_position(500);
+        ft_scs4->write_position(540);
     }
     else if(dr16->get_channel_1()<1024)
     {
@@ -497,17 +504,17 @@ void Robot_Dbus_s12()
 void Robot_Dbus_s13_s23()
 {
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_RESET);
-    if(dr16->get_channel_1()>1224)
+    if(dr16->get_channel_1()>1400)
     {
-        HAL_TIM_PWM_Start(&htim9,TIM_CHANNEL_2);
-        HAL_GPIO_WritePin(GPIOE,GPIO_PIN_12,GPIO_PIN_RESET);
-        __HAL_TIM_SET_COMPARE(&htim9,TIM_CHANNEL_2,400);
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
     }
-    else if(dr16->get_channel_1()<824)
+    else if(dr16->get_channel_1()<600)
     {
-        HAL_TIM_PWM_Start(&htim9,TIM_CHANNEL_2);
-        HAL_GPIO_WritePin(GPIOE,GPIO_PIN_12,GPIO_PIN_SET);
-        __HAL_TIM_SET_COMPARE(&htim9,TIM_CHANNEL_2,400);
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
     }
     else if(dr16->get_channel_0()<1024)
     {
@@ -525,7 +532,8 @@ void Robot_Dbus_s13_s23()
     }
     else
     {
-        HAL_TIM_PWM_Stop(&htim9,TIM_CHANNEL_2);
+        HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+
     }
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_SET);
@@ -541,17 +549,17 @@ void Robot_Dbus_s13_s23()
 void Robot_Dbus_s13_s21()
 {
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_RESET);
-    if(dr16->get_channel_1()>1224)
+    if(dr16->get_channel_1()>1400)
     {
-        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
-        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
+        HAL_TIM_PWM_Start(&htim9,TIM_CHANNEL_2);
+        HAL_GPIO_WritePin(GPIOE,GPIO_PIN_12,GPIO_PIN_RESET);
+        __HAL_TIM_SET_COMPARE(&htim9,TIM_CHANNEL_2,400);
     }
-    else if(dr16->get_channel_1()<824)
+    else if(dr16->get_channel_1()<600)
     {
-        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
-        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,400);
+        HAL_TIM_PWM_Start(&htim9,TIM_CHANNEL_2);
+        HAL_GPIO_WritePin(GPIOE,GPIO_PIN_12,GPIO_PIN_SET);
+        __HAL_TIM_SET_COMPARE(&htim9,TIM_CHANNEL_2,400);
     }
     else if(dr16->get_channel_0()<1024)
     {
@@ -569,7 +577,7 @@ void Robot_Dbus_s13_s21()
     }
     else
     {
-        HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+        HAL_TIM_PWM_Stop(&htim9,TIM_CHANNEL_2);
     }
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_SET);
