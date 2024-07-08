@@ -317,14 +317,14 @@ void Robot_Dbus_s11_s21()
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_RESET);
 
     int channel1=dr16->get_channel_1();
-    float f_speed=(float)(channel1-1024);
+    float f_speed=(float)(channel1-1024)*0.6;
 
     motion->clear();
 
     if(channel1>1024)
     {
-        m3508_motor5->set_target_rpm(f_speed);
-        m3508_motor6->set_target_rpm(-f_speed);
+        m3508_motor5->set_target_rpm(f_speed*0.2);
+        m3508_motor6->set_target_rpm(-f_speed*0.2);
         m3508_motor7->set_target_rpm(f_speed);
         m3508_motor8->set_target_rpm(-f_speed);
 
@@ -360,7 +360,7 @@ void Robot_Dbus_s11_s21()
  */
 void Robot_Dbus_s11_s22()
 {
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_3,GPIO_PIN_RESET);
 
     int channel1=dr16->get_channel_1();
     float f_speed=(float)(channel1-1024)*0.6;
@@ -393,12 +393,12 @@ void Robot_Dbus_s11_s22()
     }
 
     HAL_Delay(500);
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_3,GPIO_PIN_SET);
 }
 
 void Robot_Dbus_s11_s23()
 {
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_RESET);
 
     int channel1=dr16->get_channel_1();
     float f_speed=(float)(channel1-1024)*0.3;
@@ -432,7 +432,7 @@ void Robot_Dbus_s11_s23()
 
 
     HAL_Delay(500);
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_2,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_SET);
 }
 /*
  * @brief 上：右丝杆-上
@@ -443,7 +443,7 @@ void Robot_Dbus_s11_s23()
  */
 void Robot_Dbus_s12()
 {
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_RESET);
     if(dr16->get_channel_1()>1400)
     {
         HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
@@ -484,7 +484,7 @@ void Robot_Dbus_s12()
 
     }
     HAL_Delay(500);
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_4,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_SET);
 }
 
 /*
@@ -496,7 +496,7 @@ void Robot_Dbus_s12()
  */
 void Robot_Dbus_s13()
 {
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_RESET);
     if(dr16->get_channel_1()>1400)
     {
         HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
@@ -516,7 +516,7 @@ void Robot_Dbus_s13()
         HAL_Delay(5);
         ft_scs7->write_position(50);
     }
-    else if(dr16->get_channel_0()>1024)
+    else if(dr16->get_channel_0()> 1024)
     {
         HAL_Delay(5);
         ft_scs6->write_position(40);
@@ -526,8 +526,7 @@ void Robot_Dbus_s13()
     else
     {
         HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
-
     }
     HAL_Delay(500);
-    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_5,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_SET);
 }
