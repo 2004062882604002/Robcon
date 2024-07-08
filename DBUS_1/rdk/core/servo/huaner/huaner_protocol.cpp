@@ -331,7 +331,7 @@ void HuanerProtocol::temp_max_limit_write(uint8_t id, uint8_t temp)
 /*
  * @brief 舵机/电机控制模式
  * @param id 舵机id
- * @param mode 舵机模式，范围 0 或 1，0 代表位置控制模式，1 代表电机控制模式， 默认值 0，
+ * @param mode 舵机模式，范围 0 或 1，0 代表位置控制模式，1 代  表电机控制模式， 默认值 0，
  * @param speed 范围-1000~1000，只在电机控制模式时有效，控 制电机的转速，该值为负值代表反转，正值代表正转。写入的模式和速度不支 持掉电保存。
  */
 void HuanerProtocol::servo_or_motor_mode_write(uint8_t id, uint8_t mode, uint16_t speed)

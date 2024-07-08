@@ -75,11 +75,9 @@ extern "C" {
     void Robot_Dbus_s11_s21();
     void Robot_Dbus_s11_s22();
     void Robot_Dbus_s12();
-    void Robot_Dbus_s13_s23();
-    void Robot_Dbus_s13_s21();
+    void Robot_Dbus_s13();
 
 
-    void RobotRecvMasterCmdThread();
 
     void OnHAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t size);
     void OnHAL_UART_TxCpltCallback(UART_HandleTypeDef* huart);
