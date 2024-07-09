@@ -134,22 +134,17 @@ void RobotMain()
 
         if(dr16->alive() )
         {
-
-            while(dr16->get_s2()==1)
+            while(dr16->get_s2()==1&&dr16->get_s1()==1)
             {
-                while(dr16->get_s1()==1)
-                {
-                    Robot_Dbus_s11_s21();
-                }
-                while(dr16->get_s1()==3)
-                {
-                    Robot_Dbus_s11_s22();
-                }
-                while(dr16->get_s1()==2)
-                {
-                    Robot_Dbus_s11_s23();
-                }
-
+                Robot_Dbus_s11_s21();
+            }
+            while(dr16->get_s2()==1&&dr16->get_s1()==3)
+            {
+                Robot_Dbus_s11_s22();
+            }
+            while(dr16->get_s2()==1&&dr16->get_s1()==2)
+            {
+                Robot_Dbus_s11_s23();
             }
             while(dr16->get_s2()==3)
             {
@@ -262,8 +257,8 @@ void Robot_DbusMove()
             int channel3=dr16->get_channel_3();
             int channel2=dr16->get_channel_2();
 
-            float x_speed=(float)(channel3-1024)*3;
-            float y_speed=(float)(channel2-1024)*1.5;
+            float x_speed=(float)(channel3-1024)*6;
+            float y_speed=(float)(channel2-1024)*3;
             float z_speed=(float)(channel0-1024)*1.5;
 
             motion->clear();
@@ -281,8 +276,8 @@ void Robot_DbusMove()
         int channel3=dr16->get_channel_3();
         int channel2=dr16->get_channel_2();
 
-        float x_speed=(float)(channel3-1024)*3;
-        float y_speed=(float)(channel2-1024)*1.5;
+        float x_speed=(float)(channel3-1024)*6;
+        float y_speed=(float)(channel2-1024)*3;
 
         motion->clear();
 
@@ -343,6 +338,15 @@ void Robot_Dbus_s11_s21()
         m3508_motor10->set_target_pos(0);
         m3508_motor11->set_target_pos(0);
         m3508_motor12->set_target_pos(0);
+        HAL_Delay(50);
+        HAL_Delay(5);
+        ft_scs5->write_position(120);
+        HAL_Delay(5);
+        ft_scs6->write_position(40);
+        HAL_Delay(5);
+        ft_scs7->write_position(50);
+        HAL_Delay(5);
+        ft_scs8->write_position(0);
 
     }
 
@@ -389,6 +393,15 @@ void Robot_Dbus_s11_s22()
         m3508_motor10->set_target_pos(0);
         m3508_motor11->set_target_pos(0);
         m3508_motor12->set_target_pos(0);
+        HAL_Delay(50);
+        HAL_Delay(5);
+        ft_scs5->write_position(120);
+        HAL_Delay(5);
+        ft_scs6->write_position(40);
+        HAL_Delay(5);
+        ft_scs7->write_position(50);
+        HAL_Delay(5);
+        ft_scs8->write_position(0);
 
     }
 
@@ -427,6 +440,15 @@ void Robot_Dbus_s11_s23()
         m3508_motor10->set_target_pos(0);
         m3508_motor11->set_target_pos(0);
         m3508_motor12->set_target_pos(0);
+        HAL_Delay(50);
+        HAL_Delay(5);
+        ft_scs5->write_position(120);
+        HAL_Delay(5);
+        ft_scs6->write_position(40);
+        HAL_Delay(5);
+        ft_scs7->write_position(50);
+        HAL_Delay(5);
+        ft_scs8->write_position(0);
 
     }
 
