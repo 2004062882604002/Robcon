@@ -125,7 +125,7 @@ void RobotInit()
     motion_timeout = HAL_GetTick();
 
 }
-void RobotMain()
+void RobotMain1()
 {
     while(true)
     {
@@ -161,6 +161,30 @@ void RobotMain()
 
     }
 
+}
+
+void RobotMain2()
+{
+    while(true)
+    {
+        HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
+        HAL_Delay(100);
+
+        if(dr16->alive() )
+        {
+            while(dr16->get_s1()==1)
+            {
+                Robot_Dbus_s21();
+            }
+            while(dr16->get_s1()==2)
+            {
+                Robot_Dbus_s23();
+            }
+        }
+
+
+
+    }
 }
 void RobotTest()
 {
@@ -249,7 +273,7 @@ void Robot_DbusMove()
 {
     if (dr16->alive())
     {
-        while(dr16->get_s2()==1&&dr16->get_s1()==1 || dr16->get_s2()==1&&dr16->get_s1()==3||dr16->get_s2()==1&&dr16->get_s1()==2)
+        while(dr16->get_s1()==1 || dr16->get_s1()==2)
         {
             HAL_GPIO_WritePin(GPIOG,GPIO_PIN_1,GPIO_PIN_RESET);
 
@@ -263,8 +287,8 @@ void Robot_DbusMove()
 
             motion->clear();
 
-            motion->add_x_speed(x_speed);
-            motion->add_y_speed(-y_speed);
+            motion->add_x_speed(y_speed);
+            motion->add_y_speed(x_speed);
             motion->add_z_speed(-z_speed);
 
             motion->commit();
@@ -281,8 +305,8 @@ void Robot_DbusMove()
 
         motion->clear();
 
-        motion->add_x_speed(x_speed);
-        motion->add_y_speed(-y_speed);
+        motion->add_x_speed(y_speed);
+        motion->add_y_speed(x_speed);
 
         motion->commit();
         motion_timeout = HAL_GetTick();
@@ -340,13 +364,13 @@ void Robot_Dbus_s11_s21()
         m3508_motor12->set_target_pos(0);
         HAL_Delay(50);
         HAL_Delay(5);
-        ft_scs5->write_position(120);
+        ft_scs5->write_position(500);
         HAL_Delay(5);
-        ft_scs6->write_position(40);
+        ft_scs6->write_position(350);
         HAL_Delay(5);
-        ft_scs7->write_position(50);
+        ft_scs7->write_position(300);
         HAL_Delay(5);
-        ft_scs8->write_position(0);
+        ft_scs8->write_position(300);
 
     }
 
@@ -395,13 +419,14 @@ void Robot_Dbus_s11_s22()
         m3508_motor12->set_target_pos(0);
         HAL_Delay(50);
         HAL_Delay(5);
-        ft_scs5->write_position(120);
+        ft_scs5->write_position(500);
         HAL_Delay(5);
-        ft_scs6->write_position(40);
+        ft_scs6->write_position(350);
         HAL_Delay(5);
-        ft_scs7->write_position(50);
+        ft_scs7->write_position(300);
         HAL_Delay(5);
-        ft_scs8->write_position(0);
+        ft_scs8->write_position(300);
+
 
     }
 
@@ -442,13 +467,14 @@ void Robot_Dbus_s11_s23()
         m3508_motor12->set_target_pos(0);
         HAL_Delay(50);
         HAL_Delay(5);
-        ft_scs5->write_position(120);
+        ft_scs5->write_position(500);
         HAL_Delay(5);
-        ft_scs6->write_position(40);
+        ft_scs6->write_position(350);
         HAL_Delay(5);
-        ft_scs7->write_position(50);
+        ft_scs7->write_position(300);
         HAL_Delay(5);
-        ft_scs8->write_position(0);
+        ft_scs8->write_position(300);
+
 
     }
 
@@ -481,13 +507,14 @@ void Robot_Dbus_s12()
     else if(dr16->get_channel_0()>1024)
     {
         HAL_Delay(5);
-        ft_scs5->write_position(120);
+        ft_scs5->write_position(500);
         HAL_Delay(5);
-        ft_scs6->write_position(40);
+        ft_scs6->write_position(350);
         HAL_Delay(5);
-        ft_scs7->write_position(50);
+        ft_scs7->write_position(300);
         HAL_Delay(5);
-        ft_scs8->write_position(0);
+        ft_scs8->write_position(300);
+
     }
     else if(dr16->get_channel_0()<1024)
     {
@@ -534,16 +561,18 @@ void Robot_Dbus_s13()
     else if(dr16->get_channel_0()<1024)
     {
         HAL_Delay(5);
-        ft_scs5->write_position(95);
+        ft_scs5->write_position(500);
         HAL_Delay(5);
-        ft_scs7->write_position(50);
+        ft_scs7->write_position(300);
+
+
     }
     else if(dr16->get_channel_0()> 1024)
     {
         HAL_Delay(5);
-        ft_scs6->write_position(40);
+        ft_scs6->write_position(350);
         HAL_Delay(5);
-        ft_scs8->write_position(0);
+        ft_scs8->write_position(300);
     }
     else
     {
@@ -551,4 +580,61 @@ void Robot_Dbus_s13()
     }
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOG,GPIO_PIN_6,GPIO_PIN_SET);
+}
+
+
+void Robot_Dbus_s21()
+{
+    HAL_Delay(5);
+    ft_scs5->write_position(500);
+    HAL_Delay(5);
+    ft_scs6->write_position(350);
+    HAL_Delay(5);
+    ft_scs7->write_position(300);
+    HAL_Delay(5);
+    ft_scs8->write_position(300);
+    if(dr16->get_channel_1()>1600)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,500);
+    }
+    else if(dr16->get_channel_1()<450)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,500);
+    }
+    else
+    {
+        HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+    }
+}
+
+void Robot_Dbus_s23()
+{
+    HAL_Delay(5);
+    ft_scs5->write_position(650);
+    HAL_Delay(5);
+    ft_scs6->write_position(550);
+    HAL_Delay(5);
+    ft_scs7->write_position(550);
+    HAL_Delay(5);
+    ft_scs8->write_position(550);
+    if(dr16->get_channel_1()>1600)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,500);
+    }
+    else if(dr16->get_channel_1()<450)
+    {
+        HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+        HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,500);
+    }
+    else
+    {
+        HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+    }
 }
